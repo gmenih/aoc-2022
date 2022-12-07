@@ -1,6 +1,5 @@
-package si.menih
-package adventofcode
-package Day5Part1
+package si.menih.adventofcode
+package Day5P1
 
 import si.menih.adventofcode.lib.FileHelper
 import scala.collection.mutable.Stack

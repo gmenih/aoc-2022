@@ -1,6 +1,5 @@
-package si.menih
-package adventofcode
-package Day3Part2
+package si.menih.adventofcode
+package Day3P2
 
 import si.menih.adventofcode.lib.FileHelper
 
