@@ -4,9 +4,9 @@ package Day8P2
 import si.menih.adventofcode.lib.FileHelper
 
 extension [T](c: Iterable[T])
-  def takeUntil(f: T => Boolean): Iterable[T] =
+  def countUntil(f: T => Boolean): Int =
     val index = c.toList.indexWhere(f)
-    if (index == -1) c else c.take(index + 1)
+    if (index == -1) c.size else index + 1
 
 object TreeLineObserver:
   class Forest(val trees: List[List[Int]]):
@@ -22,10 +22,10 @@ object TreeLineObserver:
 
       if isEdge(x, y) then return 0
 
-      val vn = Math.max(0, x - 1).to(0, -1).takeUntil(v => get(v, y) >= tree).size
-      val hn = Math.max(0, y - 1).to(0, -1).takeUntil(v => get(x, v) >= tree).size
-      val vp = (x + 1).until(width).takeUntil(v => get(v, y) >= tree).size
-      val hp = (y + 1).until(height).takeUntil(v => get(x, v) >= tree).size
+      val vn = Math.max(0, x - 1).to(0, -1).countUntil(v => get(v, y) >= tree)
+      val hn = Math.max(0, y - 1).to(0, -1).countUntil(v => get(x, v) >= tree)
+      val vp = (x + 1).until(width).countUntil(v => get(v, y) >= tree)
+      val hp = (y + 1).until(height).countUntil(v => get(x, v) >= tree)
 
       vn * hn * vp * hp
 
