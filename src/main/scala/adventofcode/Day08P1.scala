@@ -36,7 +36,7 @@ object TreeLineObserver:
       if forest.isVisible(x, y)
     yield (x, y)
 
-@main def Day07(args: String*): Unit =
+@main def Day08(args: String*): Unit =
   val inputs = FileHelper.readInputLines("day08.txt")
 
   val grid = TreeLineObserver.parse(inputs)
