@@ -1,5 +1,5 @@
 package si.menih.adventofcode
-package Day10P2
+package Day11P1
 
 import si.menih.adventofcode.lib.FileHelper
 
@@ -66,14 +66,12 @@ object MonkeyBusiness:
     .take(2)
     .reduce(_ * _)
 
-@main def Day10(args: String*): Unit =
+@main def Day11(args: String*): Unit =
   val inputs = FileHelper.readInputLines("day11.txt")
 
   val monkeys = MonkeyBusiness.parse(inputs).toIndexedSeq
 
-  val result1 = MonkeyBusiness.run(monkeys, 20);
-  val result2 = MonkeyBusiness.run(monkeys, 10_000);
+  val result = MonkeyBusiness.run(monkeys, 20);
 
-  println(s"Part1: $result1")
-  println(s"Part2: $result2")
+  println(s"Result: $result")
 
