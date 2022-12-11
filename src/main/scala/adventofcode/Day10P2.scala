@@ -1,5 +1,5 @@
 package si.menih.adventofcode
-package Day10P2
+package Day11P1
 
 import si.menih.adventofcode.lib.FileHelper
 
