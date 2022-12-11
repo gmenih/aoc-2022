@@ -5,7 +5,7 @@ import si.menih.adventofcode.lib.FileHelper
 import scala.collection.mutable.Stack
 
 object SignalDetector:
-  def detect (input: String, distinct: Int) =
+  def detect(input: String, distinct: Int) =
     distinct + input.sliding(distinct).map(v => v.distinct.length == distinct).indexOf(true)
 
 @main def Day06(args: String*): Unit =

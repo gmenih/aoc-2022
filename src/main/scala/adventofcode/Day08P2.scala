@@ -15,7 +15,7 @@ object TreeLineObserver:
 
     def get(x: Int, y: Int): Int = trees(y)(x)
 
-    def isEdge (x: Int, y: Int): Boolean = x == 0 || y == 0 || x == width - 1 || y == height - 1
+    def isEdge(x: Int, y: Int): Boolean = x == 0 || y == 0 || x == width - 1 || y == height - 1
 
     def score(x: Int, y: Int): Int =
       val tree = get(x, y)
@@ -29,11 +29,11 @@ object TreeLineObserver:
 
       vn * hn * vp * hp
 
-  def parse (inputs: Iterator[String]): Forest =
+  def parse(inputs: Iterator[String]): Forest =
     val data = inputs.map(_.map(_ - '0').toList).toList
     new Forest(data)
 
-  def solve (forest: Forest) =
+  def solve(forest: Forest) =
     for
       y <- 0 until forest.height
       x <- 0 until forest.width
@@ -46,5 +46,3 @@ object TreeLineObserver:
   val sol = TreeLineObserver.solve(grid)
 
   println(sol.max)
-
-

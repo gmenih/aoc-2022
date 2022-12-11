@@ -3,7 +3,7 @@ package Day1P1
 
 import si.menih.adventofcode.lib.FileHelper
 
-def partitionInputs (inputs: List[String]): List[List[Int]] =
+def partitionInputs(inputs: List[String]): List[List[Int]] =
   // println(inputs.toList)
   val (a, b) = inputs.span(_ != "")
   val rest = b.drop(1)

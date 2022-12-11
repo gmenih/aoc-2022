@@ -8,11 +8,10 @@ object RopePhysics:
   case class Point(x: Int, y: Int):
     def t = (x, y)
 
-    def follow (p: Point): Point =
+    def follow(p: Point): Point =
       val dx = p.x - x
       val dy = p.y - y
-      if Math.abs(dx) > 1 || Math.abs(dy) > 1 then
-        Point(x + dx.sign, y + dy.sign)
+      if Math.abs(dx) > 1 || Math.abs(dy) > 1 then Point(x + dx.sign, y + dy.sign)
       else this
 
   val dMap = Map('U' -> Up, 'D' -> Down, 'L' -> Left, 'R' -> Right)
@@ -20,40 +19,40 @@ object RopePhysics:
   case class Instruction(direction: Direction, distance: Int)
 
   class Rope(val head: Point, val tail: List[Point]):
-    def followHead (): Rope =
+    def followHead(): Rope =
       var prev = head
-      var followedTail = tail.foldLeft(List[Point]())((list, knot) => {
+      var followedTail = tail.foldLeft(List[Point]()) { (list, knot) =>
         val newTail = knot.follow(prev)
 
         prev = newTail
 
         newTail :: list
-      })
+      }
 
       Rope(head, followedTail)
 
-    def move (instruction: Instruction): List[Rope] =
+    def move(instruction: Instruction): List[Rope] =
       val (dx, dy) = instruction.direction match
         case Up => (0, 1)
         case Down => (0, -1)
         case Left => (-1, 0)
         case Right => (1, 0)
 
-        var prevHead = head
-        var prevTail = tail
-        List.fill(instruction.distance){
-          val (x, y) = prevHead.t
+      var prevHead = head
+      var prevTail = tail
+      List.fill(instruction.distance) {
+        val (x, y) = prevHead.t
 
-          val newHead = Point(x + dx, y + dy)
-          val newTail = (prevHead :: prevTail).take(9)
+        val newHead = Point(x + dx, y + dy)
+        val newTail = (prevHead :: prevTail).take(9)
 
-          println(newTail)
+        println(newTail)
 
-          prevHead = newHead
-          prevTail = newTail
+        prevHead = newHead
+        prevTail = newTail
 
-          Rope(prevHead, prevTail).followHead()
-        }
+        Rope(prevHead, prevTail).followHead()
+      }
 
   def parse(inputs: Iterator[String]): Iterator[Option[Instruction]] = inputs.map { line =>
     line match
@@ -61,12 +60,12 @@ object RopePhysics:
       case _ => None
   }
 
-  def steps (instruction: Iterator[Instruction]) =
-    instruction.foldLeft(List(Rope(Point(0, 0), List())))((list, instruction) => {
+  def steps(instruction: Iterator[Instruction]) =
+    instruction.foldLeft(List(Rope(Point(0, 0), List()))) { (list, instruction) =>
       list ++ list.last.move(instruction)
-    })
+    }
 
-  def solve (ropePoints: List[Rope]): Int =
+  def solve(ropePoints: List[Rope]): Int =
     val set = ropePoints.filter(_.tail.size == 9).map(_.tail.last).toSet
     println(set)
 
@@ -80,4 +79,3 @@ object RopePhysics:
   val solution = RopePhysics.solve(ropePoints)
 
   println(s"Solution: $solution")
-

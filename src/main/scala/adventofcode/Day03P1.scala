@@ -4,17 +4,15 @@ package Day3P1
 import si.menih.adventofcode.lib.FileHelper
 
 object Rucksack:
-  def score (c: Char): Int =
-    if c >= 'A' && c <= 'Z' then
-      c - 'A' + 27
-    else
-      c - 'a' + 1
+  def score(c: Char): Int =
+    if c >= 'A' && c <= 'Z' then c - 'A' + 27
+    else c - 'a' + 1
 
-  def splitInHalf (input: String): (String, String) =
+  def splitInHalf(input: String): (String, String) =
     val half = input.length / 2
     (input.take(half), input.drop(half))
 
-  def solve (sack: String): Int =
+  def solve(sack: String): Int =
     val (left, right) = splitInHalf(sack)
     val common = left.intersect(right).head
     score(common)
@@ -26,4 +24,3 @@ object Rucksack:
   val sum = result.sum
 
   println(s"Result: $sum")
-

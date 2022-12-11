@@ -4,17 +4,17 @@ package Day2P2
 import si.menih.adventofcode.lib.FileHelper
 
 object RPS:
-  def clamp (a: Int, b: Int): Int =
+  def clamp(a: Int, b: Int): Int =
     1 + ((a + b) + 2) % 3
 
-  def round (hand: Char, choice: Char): Int =
+  def round(hand: Char, choice: Char): Int =
     val (a, b) = (hand - 'A' + 1, choice - 'X')
     b match
       case 0 => play(a, clamp(a, -1))
       case 1 => play(a, a)
       case 2 => play(a, clamp(a, 1))
 
-  def play (a: Int, b: Int): Int =
+  def play(a: Int, b: Int): Int =
     a - b match
       case 0 => b + 3
       case -1 | 2 => b + 6

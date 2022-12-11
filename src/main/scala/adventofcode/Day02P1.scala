@@ -4,7 +4,7 @@ package Day2P1
 import si.menih.adventofcode.lib.FileHelper
 
 object RPS:
-  def play (you: Char, me: Char): Int =
+  def play(you: Char, me: Char): Int =
     val (a, b) = (you - 'A' + 1, me - 'X' + 1)
     a - b match
       case 0 => b + 3

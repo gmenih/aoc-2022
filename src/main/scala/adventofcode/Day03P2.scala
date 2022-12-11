@@ -4,13 +4,11 @@ package Day3P2
 import si.menih.adventofcode.lib.FileHelper
 
 object Rucksack:
-  def score (c: Char): Int =
-    if c >= 'A' && c <= 'Z' then
-      c - 'A' + 27
-    else
-      c - 'a' + 1
+  def score(c: Char): Int =
+    if c >= 'A' && c <= 'Z' then c - 'A' + 27
+    else c - 'a' + 1
 
-  def solve (elves: Seq[String]): Int =
+  def solve(elves: Seq[String]): Int =
     elves match
       case Seq(a, b, c) =>
         val common = a.intersect(b).intersect(c).head
@@ -24,4 +22,3 @@ object Rucksack:
   val sum = result.sum
 
   println(s"Result: $sum")
-
